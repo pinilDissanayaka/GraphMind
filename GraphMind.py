@@ -6,8 +6,16 @@ with st.sidebar:
     st.subheader("Upload the manifesto of the candidate.")
     
     neo4j_url = st.text_input("Neo4j URL", "bolt://localhost:7687")
-    neo4j_user = st.text_input("Neo4j User Name", "neo4j")
+    neo4j_user_name = st.text_input("Neo4j User Name", "neo4j")
     neo4j_password = st.text_input("Neo4j Password", "password")
+    
+    if neo4j_url and neo4j_user_name and neo4j_password:
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.button("Connect to the Graph.")
+        with col2:
+            st.button("Reset the Graph.")
     
     st.button("Connect to Graph.")
     
