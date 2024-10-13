@@ -1,2 +1,12 @@
-langchain
+langchain 
 langchain-community
+langchain_groq 
+langchain_google_genai
+langchain_experimental
+langchain_core
+langgraph
+langchain_huggingface
+pypdf
+streamlit-audiorec
+plotly
+bs4
