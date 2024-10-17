@@ -5,6 +5,7 @@ neo4j_url=None
 neo4j_user_name=None
 neo4j_password=None
 
+st.set_page_config(page_title="GraphMind")
 
 #app side bar
 with st.sidebar:
@@ -16,3 +17,4 @@ with st.sidebar:
     
     if neo4j_url and neo4j_user_name and neo4j_password:
         st.button("Connect to the Graph.", on_click=connect_graph(url=neo4j_url, password=neo4j_password, userName=neo4j_user_name))
+        
