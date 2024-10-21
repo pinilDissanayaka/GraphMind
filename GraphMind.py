@@ -19,8 +19,7 @@ with st.sidebar:
     if neo4j_url and neo4j_user_name and neo4j_password:
         setup_secrets(neo4j_url, neo4j_user_name, neo4j_password)
         st.write("✅ Neo4j credentials saved")
-        
-        connected_graph = connect_graph()
     else:
-        st.write("❌ Neo4j credentials not saved")
+        setup_secrets()
+        st.write("✅ Neo4j credentials saved")
         
