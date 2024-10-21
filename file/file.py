@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from utils.utils import get_embeddings, get_llm
-from langchain.document_loaders import PyPDFLoader, TextLoader, DirectoryLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 
