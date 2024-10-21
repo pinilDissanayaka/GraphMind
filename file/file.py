@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain.document_loaders import PyPDFLoader, TextLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
@@ -21,4 +21,8 @@ def save_uploaded_file(temp_dir, uploaded_files):
 def load_uploaded_file(temp_dir):
     st.write("Loading file.")
     try:
-        pass
+        loader = DirectoryLoader(temp_dir, glob="**/*.pdf")
+        documents = loader.load()
+        return documents
+    except Exception as e:
+        st.exception(f"Unable to load file: \n {e.args}")
