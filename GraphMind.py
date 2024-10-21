@@ -20,7 +20,7 @@ with st.sidebar:
     
     uploaded_credentials = st.file_uploader("Upload Credentials", type="txt")
     if uploaded_credentials:
-        st.write(uploaded_credentials.getbuffer().decode("utf-8"))
+        st.write(uploaded_credentials.getbuffer())
     
     
     
