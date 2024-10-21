@@ -54,7 +54,8 @@ if "credentials_saved" in st.session_state:
                 graph = create_graph(graph=st.session_state['graph'], graph_documents=documents)
                 st.session_state['graph']=graph
                 
-                schema=graph.get_schema()
+                schema=graph.get_schema
+                
                 st.write(schema)
         
         
