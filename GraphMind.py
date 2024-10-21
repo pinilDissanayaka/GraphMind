@@ -3,6 +3,7 @@ import streamlit as st
 from graph import connect_graph, create_graph, clear_graph
 from file import load_uploaded_file, save_uploaded_file, transform_documents_to_graph, split_documents
 from secrects import setup_secrets
+from tempfile import TemporaryDirectory
 
 
 st.set_page_config(page_title="GraphMind")
@@ -45,7 +46,16 @@ if "credentials_saved" in st.session_state:
                 
     
     if "graph" in st.session_state:
-        schema=st.session_state['graph'].get_schema
+        if st.button("Create Graph"):
+            with TemporaryDirectory(dir='temp') as temp_dir:
+                save_uploaded_file(temp_dir=temp_dir, uploaded_files=upload_files)
+                load_uploaded_file(temp_dir=temp_dir)
+                documents = load_uploaded_file(temp_dir=temp_dir)
+                graph = create_graph(graph=st.session_state['graph'], graph_documents=documents)
+                st.session_state['graph']=graph
+                
+                schema=graph.get_schema()
+                st.write(schema)
         
-        st.markdown(schema)
+        
 
