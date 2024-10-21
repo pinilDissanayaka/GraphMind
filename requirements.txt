@@ -8,5 +8,5 @@ langgraph
 langchain_huggingface
 pypdf
 streamlit-audiorec
-plotly
+neo4j
 bs4
