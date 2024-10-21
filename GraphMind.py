@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import connect_graph
+from graph import connect_graph
 
 neo4j_url=None
 neo4j_user_name=None
