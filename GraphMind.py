@@ -37,5 +37,6 @@ with st.sidebar:
         else:
             groq_api_key = st.text_input("Groq API Key", "", type="password")
 
-            if groq_api_key:
+            if st.button("Setup LLM"):
                 setup_llm_secrets(groq_api_key=groq_api_key)
+                st.success("✅ LLM setup is complete")
