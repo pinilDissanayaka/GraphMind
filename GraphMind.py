@@ -35,18 +35,17 @@ with st.sidebar:
     if graph:
         if "GROQ_API_KEY" in st.secrets:
             setup_llm_secrets()
-            st.success("✅ LLM setup is complete")
         else:
             groq_api_key = st.text_input("Groq API Key", "", type="password")
 
-            if st.button("Setup LLM"):
-                setup_llm_secrets(groq_api_key=groq_api_key)
-                
-                temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
+        if st.button("Setup LLM"):
+            setup_llm_secrets(groq_api_key=groq_api_key)
+            
+            temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
 
-                llm=get_llm(temperature=temperature)
+            llm=get_llm(temperature=temperature)
 
-                if llm:
-                    st.success("✅ LLM setup is complete")
-                else:
-                    st.error("❌ Unable to setup LLM")
+            if llm:
+                st.success("✅ LLM setup is complete")
+            else:
+                st.error("❌ Unable to setup LLM")
