@@ -2,7 +2,7 @@ import os
 import streamlit as st
 
 def setup_neo4j_secrets(neo4j_url=None, neo4j_user_name=None, neo4j_password=None):
-    if neo4j_url or neo4j_user_name or neo4j_password:
+    if not (neo4j_url and neo4j_user_name and neo4j_password):
         os.environ["NEO4J_URL"] = st.secrets["NEO4J_URL"]
         os.environ["NEO4J_USER_NAME"] = st.secrets["NEO4J_USER_NAME"]
         os.environ["NEO4J_PASSWORD"] = st.secrets["NEO4J_PASSWORD"]
