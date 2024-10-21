@@ -19,3 +19,14 @@ def clear_graph(graph : Neo4jGraph):
         graph.query(query)
     except Exception as e:
         st.error(f"Unable to clear graph: \n {e}")
+        
+
+def create_graph(graph: Neo4jGraph, graph_documents):
+    try:
+        clear_graph(graph)
+
+        graph.add_graph_documents(graph_documents)
+        
+        return graph
+    except Exception as e:
+        st.error(f"Unable to create graph: \n {e}")

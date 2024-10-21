@@ -1,6 +1,7 @@
 import os
 import streamlit as st
-from graph import connect_graph
+from graph import connect_graph, create_graph, clear_graph
+from file import load_uploaded_file, save_uploaded_file, transform_documents_to_graph, split_documents
 from secrects import setup_secrets
 
 
@@ -32,10 +33,19 @@ with st.sidebar:
 
 if "credentials_saved" in st.session_state:
     if st.session_state['credentials_saved']:
-        upload_files = st.file_uploader("Upload File")
+        if "graph" not in st.session_state:
+            graph = connect_graph()
+            st.session_state['graph']=graph
+                        
+        upload_files = st.file_uploader("Upload File", type="pdf", accept_multiple_files=True)
         
         if upload_files:
             for upload_file in upload_files:
                 st.write("File name: ", upload_file.name)
+                
     
+    if "graph" in st.session_state:
+        schema=st.session_state['graph'].get_schema
+        
+        st.markdown(schema)
 
