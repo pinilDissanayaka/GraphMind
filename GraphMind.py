@@ -18,7 +18,7 @@ with st.sidebar:
     
     st.write("or")
     
-    uploaded_credentials = st.file_uploader("Upload Credentials", type="text")
+    uploaded_credentials = st.file_uploader("Upload Credentials", type="txt")
     if uploaded_credentials:
         st.write(uploaded_credentials.getbuffer().decode("utf-8"))
     
