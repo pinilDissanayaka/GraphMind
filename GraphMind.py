@@ -32,6 +32,6 @@ with st.sidebar:
 
 if "credentials_saved" in st.session_state:
     if st.session_state['credentials_saved']:
-        st.file_uploader("UPload File")
+        upload_file = st.file_uploader("Upload File")
     
 
