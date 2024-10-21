@@ -2,6 +2,7 @@ import os
 import streamlit as st
 from graph import connect_graph
 from secrects import setup_neo4j_secrets, setup_llm_secrets
+from utils.utils import get_llm
 
 neo4j_url=None
 neo4j_user_name=None
@@ -40,4 +41,12 @@ with st.sidebar:
 
             if st.button("Setup LLM"):
                 setup_llm_secrets(groq_api_key=groq_api_key)
-                st.success("✅ LLM setup is complete")
+                
+                temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
+
+                llm=get_llm(temperature=temperature)
+
+                if llm:
+                    st.success("✅ LLM setup is complete")
+                else:
+                    st.error("❌ Unable to setup LLM")
