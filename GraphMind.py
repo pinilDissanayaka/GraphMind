@@ -47,7 +47,7 @@ if "credentials_saved" in st.session_state:
     
     if "graph" in st.session_state:
         if st.button("Create Graph"):
-            with TemporaryDirectory(dir='/') as temp_dir:
+            with TemporaryDirectory(dir='file/') as temp_dir:
                 save_uploaded_file(temp_dir=temp_dir, uploaded_files=upload_files)
                 load_uploaded_file(temp_dir=temp_dir)
                 documents = load_uploaded_file(temp_dir=temp_dir)
