@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from langchain.graphs import Neo4jGraph
+from langchain_community.graphs import Neo4jGraph
 
 def connect_graph():
     try:
