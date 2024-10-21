@@ -2,15 +2,15 @@ import os
 import streamlit as st
 from langchain.graphs import Neo4jGraph
 
-def connect_graph(neo4j_url:str, neo4j_user_name:str, neo4j_password:str):
+def connect_graph():
     try:
-        graph=Neo4jGraph(url=neo4j_url,
-                        password=neo4j_password,
-                        username=neo4j_user_name)
+        graph=Neo4jGraph(url=os.environ["NEO4J_URL"],
+                        password=os.environ["NEO4J_PASSWORD"],
+                        username=os.environ["NEO4J_USER_NAME"])
         return graph
 
     except Exception as e:
-        st.error(f"Unable to connect: {e}")
+        st.error(f"Unable to connect: \n {e}")
 
 def clear_graph(graph : Neo4jGraph):
     pass

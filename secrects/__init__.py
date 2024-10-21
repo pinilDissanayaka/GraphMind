@@ -1,1 +1,1 @@
-from .secrets import setup_secrets
+from .secrets import setup_neo4j_secrets, setup_llm_secrets
