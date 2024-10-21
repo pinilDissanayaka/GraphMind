@@ -34,6 +34,7 @@ with st.sidebar:
     if graph:
         if "GROQ_API_KEY" in st.secrets:
             setup_llm_secrets()
+            st.success("✅ LLM setup is complete")
         else:
             groq_api_key = st.text_input("Groq API Key", "", type="password")
 
