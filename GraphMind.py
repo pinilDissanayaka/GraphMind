@@ -16,8 +16,9 @@ st.set_page_config(page_title="GraphMind")
 with st.sidebar:
     st.subheader("Upload the credentials.")
     
-    if "NEO4J_URL" and "NEO4J_USER_NAME" and "NEO4J_PASSWORD" in "GROQ_API_KEY" in st.secrets:
+    if "NEO4J_URL" and "NEO4J_USER_NAME" and "NEO4J_PASSWORD" and "GROQ_API_KEY" in st.secrets:
         setup_secrets()
+        st.success("✅ Credentials saved!")
     else:
         neo4j_url = st.text_input("Neo4j URL", "bolt://localhost:7687")
         neo4j_user_name = st.text_input("Neo4j User Name", "neo4j")
