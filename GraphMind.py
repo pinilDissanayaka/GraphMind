@@ -8,6 +8,7 @@ neo4j_url=None
 neo4j_user_name=None
 neo4j_password=None
 graph=None
+llm=None
 
 st.set_page_config(page_title="GraphMind")
 
@@ -34,18 +35,28 @@ with st.sidebar:
             
     if graph:
         if "GROQ_API_KEY" in st.secrets:
-            setup_llm_secrets()
+            if st.button("Setup LLM"):
+                setup_llm_secrets()
+                
+                temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
+
+                llm=get_llm(temperature=temperature)
+
+                if llm:
+                    st.success("✅ LLM setup is complete")
+                else:
+                    st.error("❌ Unable to setup LLM")
         else:
             groq_api_key = st.text_input("Groq API Key", "", type="password")
 
-        if st.button("Setup LLM"):
-            setup_llm_secrets(groq_api_key=groq_api_key)
-            
-            temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
+            if st.button("Setup LLM"):
+                setup_llm_secrets(groq_api_key=groq_api_key)
+                
+                temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
 
-            llm=get_llm(temperature=temperature)
+                llm=get_llm(temperature=temperature)
 
-            if llm:
-                st.success("✅ LLM setup is complete")
-            else:
-                st.error("❌ Unable to setup LLM")
+                if llm:
+                    st.success("✅ LLM setup is complete")
+                else:
+                    st.error("❌ Unable to setup LLM")
