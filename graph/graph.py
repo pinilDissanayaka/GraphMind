@@ -13,4 +13,9 @@ def connect_graph():
         st.error(f"Unable to connect: \n {e}")
 
 def clear_graph(graph : Neo4jGraph):
-    pass
+    try:
+        query = "MATCH (n) DETACH DELETE n"
+        
+        graph.query(query)
+    except Exception as e:
+        st.error(f"Unable to clear graph: \n {e}")
