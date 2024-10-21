@@ -6,6 +6,7 @@ from secrects import setup_neo4j_secrets, setup_llm_secrets
 neo4j_url=None
 neo4j_user_name=None
 neo4j_password=None
+graph=None
 
 st.set_page_config(page_title="GraphMind")
 
