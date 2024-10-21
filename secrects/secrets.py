@@ -12,7 +12,7 @@ def setup_neo4j_secrets(neo4j_url=None, neo4j_user_name=None, neo4j_password=Non
         os.environ["NEO4J_PASSWORD"] = neo4j_password
         
 def setup_llm_secrets(groq_api_key=None):
-    if groq_api_key:
+    if not groq_api_key:
         os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
     else:
         os.environ["GROQ_API_KEY"] = groq_api_key

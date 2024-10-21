@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from graph import connect_graph
-from secrects import setup_neo4j_secrets
+from secrects import setup_neo4j_secrets, setup_llm_secrets
 
 neo4j_url=None
 neo4j_user_name=None
@@ -29,3 +29,12 @@ with st.sidebar:
             st.success("✅ Connected to Neo4j")
         else:
             st.error("❌ Unable to connect to Neo4j")
+            
+    if graph:
+        if "GROQ_API_KEY" in st.secrets:
+            setup_llm_secrets()
+        else:
+            groq_api_key = st.text_input("Groq API Key", "", type="password")
+
+            if groq_api_key:
+                setup_llm_secrets(groq_api_key=groq_api_key)
