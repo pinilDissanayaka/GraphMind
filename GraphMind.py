@@ -32,6 +32,10 @@ with st.sidebar:
 
 if "credentials_saved" in st.session_state:
     if st.session_state['credentials_saved']:
-        upload_file = st.file_uploader("Upload File")
+        upload_files = st.file_uploader("Upload File")
+        
+        if upload_files:
+            for upload_file in upload_files:
+                st.write("File name: ", upload_file.name)
     
 
