@@ -16,10 +16,18 @@ with st.sidebar:
     neo4j_user_name = st.text_input("Neo4j User Name", "neo4j")
     neo4j_password = st.text_input("Neo4j Password", "password", type="password")
     
+    st.write("or")
+    
+    uploaded_credentials = st.file_uploader("Upload Credentials", type="text")
+    if uploaded_credentials:
+        st.write(uploaded_credentials.getbuffer().decode("utf-8"))
+    
+    
+    
     if neo4j_url and neo4j_user_name and neo4j_password:
         setup_secrets(neo4j_url, neo4j_user_name, neo4j_password)
-        st.write("✅ Neo4j credentials saved")
+        st.success("✅ Neo4j credentials saved")
     else:
         setup_secrets()
-        st.write("✅ Neo4j credentials saved")
+        st.success("✅ Neo4j credentials saved")
         
