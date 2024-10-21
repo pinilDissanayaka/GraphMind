@@ -1,7 +1,7 @@
 langchain 
 langchain-community
 langchain_groq 
-langchain_google_genai
+langchain-huggingface
 langchain_experimental
 langchain_core
 langgraph
