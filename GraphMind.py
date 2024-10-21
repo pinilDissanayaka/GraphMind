@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from graph import connect_graph
-from secrects import setup_neo4j_secrets, setup_llm_secrets
+from secrects import setup_secrets
 from utils.utils import get_llm
 
 neo4j_url=None
@@ -16,47 +16,17 @@ st.set_page_config(page_title="GraphMind")
 with st.sidebar:
     st.subheader("Upload the credentials.")
     
-    if "NEO4J_URL" and "NEO4J_USER_NAME" and "NEO4J_PASSWORD" in st.secrets:
-        setup_neo4j_secrets()
+    if "NEO4J_URL" and "NEO4J_USER_NAME" and "NEO4J_PASSWORD" in "GROQ_API_KEY" in st.secrets:
+        setup_secrets()
     else:
         neo4j_url = st.text_input("Neo4j URL", "bolt://localhost:7687")
         neo4j_user_name = st.text_input("Neo4j User Name", "neo4j")
         neo4j_password = st.text_input("Neo4j Password", "password", type="password")
+        groq_api_key = st.text_input("Groq API Key", "", type="password")
         
-        if neo4j_url and neo4j_user_name and neo4j_password:
-            setup_neo4j_secrets(neo4j_url=neo4j_url, neo4j_user_name=neo4j_user_name, neo4j_password=neo4j_password)
-
-    if st.button("Connect to Neo4j"):
-        graph = connect_graph()
-        if graph:
-            st.success("✅ Connected to Neo4j")
+        
+        if st.button("Save Credentials", on_click=setup_secrets(neo4j_url=neo4j_url, neo4j_user_name=neo4j_user_name, neo4j_password=neo4j_password, groq_api_key=groq_api_key)):
+            st.success("✅ Credentials saved!")
         else:
-            st.error("❌ Unable to connect to Neo4j")
-            
-    if graph:
-        if "GROQ_API_KEY" in st.secrets:
-            if st.button("Setup LLM"):
-                setup_llm_secrets()
-                
-                temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
+            st.warning("⚠️ Please enter valid credentials!")
 
-                llm=get_llm(temperature=temperature)
-
-                if llm:
-                    st.success("✅ LLM setup is complete")
-                else:
-                    st.error("❌ Unable to setup LLM")
-        else:
-            groq_api_key = st.text_input("Groq API Key", "", type="password")
-
-            if st.button("Setup LLM"):
-                setup_llm_secrets(groq_api_key=groq_api_key)
-                
-                temperature = st.slider("Temperature", 0.0, 1.0, 0.5)
-
-                llm=get_llm(temperature=temperature)
-
-                if llm:
-                    st.success("✅ LLM setup is complete")
-                else:
-                    st.error("❌ Unable to setup LLM")
