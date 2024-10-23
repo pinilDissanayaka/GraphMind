@@ -1,1 +1,1 @@
-from .graph import connect_graph, clear_graph, create_graph
+from .graph import connect_graph, clear_graph, add_to_graph

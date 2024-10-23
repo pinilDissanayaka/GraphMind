@@ -21,12 +21,20 @@ def clear_graph(graph : Neo4jGraph):
         st.error(f"Unable to clear graph: \n {e}")
         
 
-def create_graph(graph: Neo4jGraph, graph_documents):
+def add_to_graph(graph: Neo4jGraph, graph_documents, clear_graph=True):
     try:
-        clear_graph(graph)
+        if clear_graph:
+            clear_graph(graph)
 
-        graph.add_graph_documents(graph_documents)
+            graph.add_graph_documents(graph_documents)
+            
+        else:
+            graph.add_graph_documents(graph_documents)
         
         return graph
     except Exception as e:
         st.error(f"Unable to create graph: \n {e}")
+        
+        
+def upload_file_to_graph():
+    pass

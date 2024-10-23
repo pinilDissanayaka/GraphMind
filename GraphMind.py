@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from graph import connect_graph, create_graph, clear_graph
-from file import load_uploaded_file, save_uploaded_file, transform_documents_to_graph, split_documents
+from file import load_uploaded_file, save_uploaded_file, transform_documents_to_graph_documents, split_documents
 from secrects import setup_secrets
 from tempfile import TemporaryDirectory
 

@@ -31,18 +31,17 @@ def load_uploaded_file(temp_dir):
         
         
 def split_documents(documents):
-
     try:
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000,
-            chunk_overlap=200
+            chunk_overlap=500
         )
         split_documents = text_splitter.split_documents(documents)
         return split_documents
     except Exception as e:
         st.exception(f"Unable to split documents: \n {e.args}")
         
-def transform_documents_to_graph(split_documents):
+def transform_documents_to_graph_documents(split_documents):
 
     try:
         transformer = LLMGraphTransformer(llm=get_llm(0.7))

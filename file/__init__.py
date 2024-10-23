@@ -1,1 +1,1 @@
-from .file import save_uploaded_file, load_uploaded_file, transform_documents_to_graph, split_documents
+from .file import save_uploaded_file, load_uploaded_file, transform_documents_to_graph_documents, split_documents

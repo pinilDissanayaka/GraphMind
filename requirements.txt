@@ -7,6 +7,5 @@ langchain_core
 langgraph
 langchain_huggingface
 pypdf
-streamlit-audiorec
 neo4j
-bs4
+json-repair
