@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 3. Run the app with Streamlit:
 ```
-streamlit run app.py
+streamlit run GraphMind.py
 ```
 
 ## 💡 Usage
