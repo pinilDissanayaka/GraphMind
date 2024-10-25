@@ -6,7 +6,9 @@ from secrects import setup_secrets
 from tempfile import TemporaryDirectory
 
 
-st.set_page_config(page_title="GraphMind")
+st.set_page_config(page_title="GraphMind", layout="wide", initial_sidebar_state="expanded", page_icon="🧬")
+
+st.image(image="assets/GraphMind.png", width=200)
 
 #app side bar
 with st.sidebar:    
