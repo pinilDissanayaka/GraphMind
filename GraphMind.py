@@ -8,7 +8,7 @@ from tempfile import TemporaryDirectory
 
 st.set_page_config(page_title="GraphMind", layout="wide", initial_sidebar_state="expanded", page_icon="🧬")
 
-st.image(image="assets/GraphMind.png", width=200)
+st.image(image="assets/graphMind.png")
 
 #app side bar
 with st.sidebar:    
